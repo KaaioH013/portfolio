@@ -109,3 +109,16 @@ acuracia = accuracy_score(y_test, previsoes)
 print("\n--- Avaliação do Modelo ---")
 print(f"A acurácia do nosso modelo é: {acuracia * 100:.2f}%")
 print(f"\nIsso significa que o modelo acertou a previsão para {acuracia * 100:.0f}% dos passageiros do conjunto de teste.")
+
+# ===================================================================
+# 7. SALVANDO O MODELO PARA USO FUTURO
+# ===================================================================
+import joblib
+
+# O caminho aponta para a NOSSA NOVA PASTA do projeto de hoje.
+caminho_modelo = "dia_12_dashboard_ml/modelo_titanic.joblib"
+
+# Usar o joblib para "despejar" (dump) nosso objeto 'modelo' treinado em um arquivo.
+joblib.dump(modelo, caminho_modelo)
+
+print(f"\nModelo treinado salvo com sucesso em: {caminho_modelo}")
