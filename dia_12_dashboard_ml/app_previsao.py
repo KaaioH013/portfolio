@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import os
 
 # --- TÍTULO E CABEÇALHO ---
 st.title("Previsão de Sobrevivência no Titanic")
@@ -11,7 +12,18 @@ st.header("Este app utiliza um modelo de Machine Learning para prever se um pass
 # Usamos try/except para garantir que o app não quebre se o arquivo do modelo não for encontrado
 try:
     # O caminho agora é relativo a ESTE script. Como estão na mesma pasta, só o nome do arquivo basta.
-    modelo = joblib.load("C:\\Users\\Hrsca\\OneDrive\\Área de Trabalho\\Portifolio\\portfolio\\dia_12_dashboard_ml\\modelo_titanic.joblib")
+    # --- CARREGAR O MODELO SALVO (JEITO PROFISSIONAL) ---
+# Pega o caminho do diretório onde o script app_previsao.py está.
+caminho_script = os.path.dirname(__file__)
+# Junta o caminho do script com o nome do arquivo do modelo.
+caminho_modelo = os.path.join(caminho_script, "modelo_titanic.joblib")
+
+# Usamos try/except para garantir que o app não quebre se o arquivo do modelo não for encontrado
+try:
+    modelo = joblib.load(caminho_modelo)
+except FileNotFoundError:
+    st.error("Arquivo do modelo não encontrado! Verifique se o arquivo 'modelo_titanic.joblib' está na mesma pasta que o app.")
+    st.stop() # Para a execução do app se o modelo não for encontrado
 except FileNotFoundError:
     st.error("Arquivo do modelo não encontrado! Verifique se o arquivo 'modelo_titanic.joblib' está na mesma pasta que o app.")
     st.stop() # Para a execução do app se o modelo não for encontrado
