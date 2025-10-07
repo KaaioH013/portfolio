@@ -24,4 +24,5 @@ O objetivo deste projeto foi aplicar o ciclo completo de uma solução de Machin
 2. No terminal, a partir da pasta raiz do portfólio, execute o comando:
 ```bash
 streamlit run dia_12_dashboard_ml/app_previsao.py
+```bash 
 3. A aplicação abrirá automaticamente no seu navegador.
