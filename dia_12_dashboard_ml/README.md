@@ -4,7 +4,7 @@ Este projeto é uma aplicação web interativa construída com Streamlit que uti
 
 ## 🖼️ Demonstração
 
-![Screenshot do Dashboard de Previsão](screenshot.png)
+![Screenshot do Dashboard de Previsão](titanic.jpg)
 
 ## 📖 Descrição do Projeto
 
