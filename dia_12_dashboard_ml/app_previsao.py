@@ -9,24 +9,17 @@ st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/RMS_Titanic_
 st.header("Este app utiliza um modelo de Machine Learning para prever se um passageiro sobreviveria.")
 
 # --- CARREGAR O MODELO SALVO ---
-# Usamos try/except para garantir que o app não quebre se o arquivo do modelo não for encontrado
-try:
-    # O caminho agora é relativo a ESTE script. Como estão na mesma pasta, só o nome do arquivo basta.
-    # --- CARREGAR O MODELO SALVO (JEITO PROFISSIONAL) ---
-# Pega o caminho do diretório onde o script app_previsao.py está.
+# Estas linhas não têm espaços no início
 caminho_script = os.path.dirname(__file__)
-# Junta o caminho do script com o nome do arquivo do modelo.
 caminho_modelo = os.path.join(caminho_script, "modelo_titanic.joblib")
 
-# Usamos try/except para garantir que o app não quebre se o arquivo do modelo não for encontrado
 try:
+    # Esta linha tem 4 espaços no início para ficar "dentro" do try
     modelo = joblib.load(caminho_modelo)
 except FileNotFoundError:
-    st.error("Arquivo do modelo não encontrado! Verifique se o arquivo 'modelo_titanic.joblib' está na mesma pasta que o app.")
-    st.stop() # Para a execução do app se o modelo não for encontrado
-except FileNotFoundError:
-    st.error("Arquivo do modelo não encontrado! Verifique se o arquivo 'modelo_titanic.joblib' está na mesma pasta que o app.")
-    st.stop() # Para a execução do app se o modelo não for encontrado
+    # Estas linhas também têm 4 espaços para ficarem "dentro" do except
+    st.error("Arquivo do modelo não encontrado! Verifique se 'modelo_titanic.joblib' está na mesma pasta que o app.")
+    st.stop()
 
 # --- INTERFACE DO USUÁRIO (INPUTS) ---
 st.subheader("Por favor, insira as características do passageiro para a previsão:")
